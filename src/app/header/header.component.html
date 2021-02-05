@@ -1,0 +1,28 @@
+<!--NAVIGATION DANS L'APPLI-->
+<nav class = "navbar navbar-default">
+    <div class = "container-fluid bg-dark text-white">
+        <ul class = "nav left">
+            <li class = "nav-item" routerLinkActive = "active">
+                <a class="nav-link active" routerLink="home">
+					<ion-icon name="list"></ion-icon>
+				</a>
+            </li>
+            <li class = "nav-item" routerLinkActive = "active">
+                <a class="nav-link" routerLink="new-term">
+					<ion-icon name="add"></ion-icon>
+				</a>
+            </li>
+        </ul>
+        <ul class = "nav navbar-right">
+            <li class = "nav-item" routerLinkActive = "active" *ngIf ="!isAuth">
+                <a class = "nav-link" routerLink = "auth/signup">Signup</a>
+            </li>
+            <li class = "nav-item" routerLinkActive = "active" *ngIf ="!isAuth">
+                <a class = "nav-link" routerLink = "auth/signin">Signin</a>
+            </li>
+            <li class = "nav-item" *ngIf ="isAuth">
+                <a class = "nav-link" (click) = "onSignOut()" style ="cursor: pointer">Signout</a>
+            </li>
+        </ul>
+    </div>
+</nav>

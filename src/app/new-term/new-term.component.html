@@ -1,0 +1,51 @@
+<div class="create-page">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Create Term</li>
+      </ol>
+    </nav>
+    <div class="page-content">
+      <div class="row">
+        <div class="col col-md-8">
+          <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
+  
+            <div class="form-group">
+              <mat-form-field class="input-style">
+                <input matInput placeholder="Name" class="form-control" formControlName="name">
+              </mat-form-field>
+              <ng-container *ngFor="let validation of validation_messages.name">
+                <mat-error
+                  *ngIf="exampleForm.get('name').hasError(validation.type) && (exampleForm.get('name').dirty || exampleForm.get('name').touched)">
+                  {{validation.message}}</mat-error>
+              </ng-container>
+            </div>
+  
+            <div class="form-group">
+              <mat-form-field class="input-style">
+                <input matInput placeholder="Acronym meaning" class="form-control" formControlName="acronymMeaning">
+              </mat-form-field>
+            </div>
+  
+            <div class="form-group">
+              <mat-form-field class="input-style">
+                <textarea matInput placeholder="Definition" class="form-control" formControlName="definition"></textarea>
+              </mat-form-field>
+              <ng-container *ngFor="let validation of validation_messages.definition">
+                <mat-error
+                  *ngIf="exampleForm.get('definition').hasError(validation.type) && (exampleForm.get('definition').dirty || exampleForm.get('definition').touched)">
+                  {{validation.message}}</mat-error>
+              </ng-container>
+            </div>  
+  
+            <div class="row submit-button-container">
+              <div class="col-md-4">
+                <button mat-raised-button class="submit-button" color="primary" type="submit"
+                  [disabled]="!exampleForm.valid">Create</button>
+              </div>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
